@@ -1,0 +1,21 @@
+{
+  "name": "ReactJS_GC_KarmaJS",
+  "version": "0.0.1",
+  "authors": [
+    "@popplagip"
+  ],
+  "description": "ReactJS + Google Closure + Karma Development Stack",
+  "main": "?",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.11.2",
+    "closurelibrary": "*"
+  }
+}

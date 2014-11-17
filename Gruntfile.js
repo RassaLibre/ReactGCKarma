@@ -23,9 +23,39 @@ module.exports = function(grunt) {
             }]
         }
     },
+    sass: {                              // Task
+      dist: {                            // Target
+        options: {                       // Target options
+          style: 'compressed'
+        },
+        files: {                                       // Dictionary of files
+          'app/css/main.css': 'sass/**/*.scss',        // 'destination': 'source'
+        }
+      }
+    },
+    closureLint: {
+      app:{
+        command: 'gjslint',
+        src: ['app/js/App/**/*.js','!app/js/App/ui/**/*.js'],
+        options: {
+          stdout: true,
+          strict: true
+        }
+      }
+    },
+    closureFixStyle: {
+      app:{
+        command: 'fixjsstyle',
+        src: ['app/js/App/**/*.js','!app/js/App/ui/**/*.js'],
+        options: {
+          stdout: true,
+          strict: true
+        }
+      }
+    },
     watch: {
       scripts: {
-        files: ['app/js/App/**/*.js','app/index.html','jsx/**/*.jsx'],
+        files: ['app/js/App/**/*.js','app/index.html','jsx/**/*.jsx','sass/**/*.scss'],
         tasks: ['default'],
         options: {
           spawn: false,
@@ -44,7 +74,13 @@ module.exports = function(grunt) {
   //react
   grunt.loadNpmTasks('grunt-react');
 
+  //sass
+  grunt.loadNpmTasks('grunt-contrib-sass');
+
+  //linting
+  grunt.loadNpmTasks('grunt-closure-linter');
+
   // Default task(s).
-  grunt.registerTask('default', ['react','closureDepsWriter:app','watch']);
+  grunt.registerTask('default', ['react','sass','closureFixStyle','closureLint','closureDepsWriter:app','watch']);
 
 };

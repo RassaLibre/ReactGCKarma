@@ -22,7 +22,7 @@ App.ui.atomic.Button = React.createClass({displayName: 'Button',
   */
   render: function() {
     return(
-        React.DOM.button({onClick: this.props.click}, this.props.label)
+        React.DOM.button({onClick: this.props.click, className: "button"}, this.props.label)
     );
   }
 });

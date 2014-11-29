@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
-goog.provide('App.ui.todo.Component');
+goog.provide('App.ui.Todo');
 goog.require('App.ui.todo.AddForm');
 goog.require('App.ui.todo.List');
-App.ui.todo.Component = React.createClass({
+App.ui.Todo = React.createClass({
   /**
   * Property types
   */

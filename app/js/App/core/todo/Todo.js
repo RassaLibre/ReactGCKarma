@@ -1,5 +1,5 @@
 goog.provide('App.core.todo.Todo');
-goog.require('App.ui.todo.Component');
+goog.require('App.ui.Todo');
 
 
 
@@ -19,7 +19,7 @@ App.core.todo.Todo = function(label, parent) {
 * renders the form into the parent element
 */
 App.core.todo.Todo.prototype.render = function() {
-  React.renderComponent(App.ui.todo.Component(this.to_react()), this.parent);
+  React.renderComponent(App.ui.Todo(this.to_react()), this.parent);
 };
 
 

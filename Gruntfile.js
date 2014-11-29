@@ -29,7 +29,7 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {                                       // Dictionary of files
-          'app/css/main.css': 'sass/**/*.scss',        // 'destination': 'source'
+          'app/css/main.css': 'sass/main.scss',        // 'destination': 'source'
         }
       }
     },

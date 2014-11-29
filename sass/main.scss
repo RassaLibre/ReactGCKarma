@@ -1,3 +1,18 @@
-body{
-  color: blue;
-}
+/**
+* imports, imports and imports
+*/
+
+
+
+@import "core/helpers";
+@import "core/mixins";
+@import "core/variables";
+
+@import "base/fonts";
+@import "base/table";
+@import "base/text";
+
+@import "components/button";
+@import "components/input";
+
+@import "layout/layout";

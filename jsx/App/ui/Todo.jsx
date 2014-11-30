@@ -23,6 +23,27 @@ App.ui.Todo = React.createClass({
       todos: function(){return false;}
     };
   },
+
+  /**
+  * add the todos after the component is mounted
+  */
+  componentDidMount: function(){
+    this.load_todos();
+  },
+
+  /**
+  * loads the Todos from the models
+  */
+  load_todos: function(){
+    this.setState({todos: this.props.todos()})
+  },
+
+  /**
+  * return the initial state of the component
+  */
+  getInitialState: function(){
+    return {"todos" : []};
+  },
   
   /**
   * render the element
@@ -30,8 +51,12 @@ App.ui.Todo = React.createClass({
   render: function() {
     return(
       <div>
-        <App.ui.todo.AddForm label={this.props.label} add_new_todo={this.props.add_new_todo}/>
-        <App.ui.todo.List todos={this.props.todos}/>
+        <App.ui.todo.AddForm
+          label={this.props.label}
+          add_new_todo={this.props.add_new_todo}
+          reload_todos={this.load_todos}/>
+        <App.ui.todo.List
+          todos={this.state.todos}/>
       </div>
     );
   }

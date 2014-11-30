@@ -20,7 +20,11 @@ App.ui.atomic.Input = React.createClass({displayName: 'Input',
   */
   render: function() {
     return(
-        React.DOM.input({type: "text", className: "input", defaultValue: this.props.value})
+        React.DOM.input({
+          type: "text", 
+          ref: "value", 
+          className: "input", 
+          defaultValue: this.props.value})
     );
   }
 });

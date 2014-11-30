@@ -14,7 +14,7 @@ App.init = function() {
   //generator of IDs
   var generator = new goog.ui.IdGenerator();
   var container = document.getElementById('container');
-  var collection = new App.components.todoList.TodoCollection();
+  var collection = new App.components.todoList.TodoCollection(generator);
   /////////////////////////// example data /////////////////////////////////////
   var todo = new App.components.todoList.Todo(generator.getNextUniqueId(),
       'Wash the car', false);

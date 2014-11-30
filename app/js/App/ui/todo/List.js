@@ -7,7 +7,7 @@ App.ui.todo.List = React.createClass({displayName: 'List',
   * Property types
   */
   propTypes: {
-    todos: React.PropTypes.func
+    todos: React.PropTypes.array
   },
 
   /**
@@ -15,22 +15,8 @@ App.ui.todo.List = React.createClass({displayName: 'List',
   */
   getDefaultProps: function(){
     return {
-      todos: function(){return false;}
+      todos: []
     };
-  },
-
-  /**
-  * return the initial state of the component
-  */
-  getInitialState: function(){
-    return {"todos" : []};
-  },
-  
-  /**
-  * add the todos after the component is mounted
-  */
-  componentDidMount: function(){
-    this.setState({todos: this.props.todos()})
   },
 
   /**
@@ -38,8 +24,8 @@ App.ui.todo.List = React.createClass({displayName: 'List',
   */
   render: function() {
     var todos = [];
-    this.state.todos.forEach(function(elem){
-      todos.push(App.ui.todo.ListItem({todo: elem}));
+    this.props.todos.forEach(function(elem){
+      todos.push(App.ui.todo.ListItem({todo: elem, key: elem.id}));
     });
     return(
       React.DOM.ul(null, 

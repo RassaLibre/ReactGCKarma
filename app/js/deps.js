@@ -3,7 +3,7 @@
 goog.addDependency('../../../../js/App/App.js', ['App'], ['App.components.TodoList', 'App.components.todoList.Todo', 'App.components.todoList.TodoCollection', 'goog.ui.IdGenerator']);
 goog.addDependency('../../../../js/App/components/TodoList.js', ['App.components.TodoList'], ['App.ui.Todo']);
 goog.addDependency('../../../../js/App/components/todoList/Todo.js', ['App.components.todoList.Todo'], []);
-goog.addDependency('../../../../js/App/components/todoList/TodoCollection.js', ['App.components.todoList.TodoCollection'], []);
+goog.addDependency('../../../../js/App/components/todoList/TodoCollection.js', ['App.components.todoList.TodoCollection'], ['App.components.todoList.Todo']);
 goog.addDependency('../../../../js/App/ui/Component.js', ['App.ui.todo.Component'], ['App.ui.todo.AddForm', 'App.ui.todo.List']);
 goog.addDependency('../../../../js/App/ui/Todo.js', ['App.ui.Todo'], ['App.ui.todo.AddForm', 'App.ui.todo.List']);
 goog.addDependency('../../../../js/App/ui/atomic/Button.js', ['App.ui.atomic.Button'], []);

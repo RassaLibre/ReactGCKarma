@@ -1,22 +1,33 @@
 goog.provide('App.components.todoList.TodoCollection');
+goog.require('App.components.todoList.Todo');
 
 
 
 /**
 *
 * @constructor
+* @param {goog.ui.IdGenerator} generator
 */
-App.components.todoList.TodoCollection = function() {
+App.components.todoList.TodoCollection = function(generator) {
   this.todos = [];
+  this.generator = generator;
 };
 
 
 /**
 * adds Todo to the collection
-* @param {App.components.todoList.Todo} todo
+* @param {App.components.todoList.Todo|Object} todo
 */
 App.components.todoList.TodoCollection.prototype.add_todo = function(todo) {
-  this.todos.push(todo);
+  if (todo instanceof App.components.todoList.Todo) {
+    this.todos.push(todo);
+  }
+  else {
+    this.todos.push(
+        new App.components.todoList.Todo(this.generator.getNextUniqueId(),
+        todo.name, false)
+    );
+  }
 };
 
 
@@ -44,6 +55,7 @@ App.components.todoList.TodoCollection.prototype.to_react = function() {
     for (var i = 0; i < this.todos.length; i++) {
       to_be_returned.push(this.todos[i].to_react());
     }
+    console.log(to_be_returned);
     return to_be_returned;
   }
 };

@@ -46,7 +46,7 @@ App.components.TodoList.prototype.add_new_todo = function() {
 App.components.TodoList.prototype.to_react = function() {
   return {
     'label' : this.label,
-    'add_new_todo' : this.add_new_todo.bind(this),
+    'add_new_todo' : this.todos.add_todo.bind(this.todos),
     'todos' : this.todos.to_react.bind(this.todos)
   };
 };

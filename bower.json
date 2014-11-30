@@ -17,5 +17,8 @@
   "dependencies": {
     "react": "~0.11.2",
     "closurelibrary": "*"
+  },
+  "devDependencies": {
+    "closure-compiler": "~0.2.6"
   }
 }

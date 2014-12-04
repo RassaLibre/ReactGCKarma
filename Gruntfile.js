@@ -12,6 +12,32 @@ module.exports = function(grunt) {
         dest: 'app/js/deps.js'
       }
     },
+    closureCompiler:  {
+      options: {
+        compilerFile: 'app/components/closure-compiler/lib/vendor/compiler.jar',
+        checkModified: true,
+        compilerOpts: {
+          //now this will be something
+          externs: ['app/components/react-externs/externs.js'],
+          closure_entry_point: 'App',
+          compilation_level: 'ADVANCED_OPTIMIZATIONS',
+          warning_level: 'verbose',
+          summary_detail_level: 3,
+          output_wrapper: '"(function(){%output%}).call(this);"'
+        },
+        execOpts:{
+          maxBuffer: 999999 * 1024
+        }
+      },
+      app: {
+        src: [
+          'app/components/closurelibrary/**/*.js',
+          'app/js/App/**/*.js',
+          '!app/js/App/**/*.test.js'
+          ],
+        dest: 'build/compiled.js'
+      }
+    },
     react: {
         dynamic_mappings: {
             files:[{
@@ -82,5 +108,5 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['react','sass','closureFixStyle','closureLint','closureDepsWriter:app','watch']);
-
+  grunt.registerTask('compile', ['closureCompiler:app']);
 };

@@ -24,8 +24,9 @@ App.ui.todo.List = React.createClass({displayName: 'List',
   */
   render: function() {
     var todos = [];
+    var listItem = React.createFactory(App.ui.todo.ListItem);
     this.props.todos.forEach(function(elem){
-      todos.push(App.ui.todo.ListItem({todo: elem, key: elem.id}));
+      todos.push(listItem({todo: elem, key: elem.id}));
     });
     return(
       React.DOM.ul(null, 

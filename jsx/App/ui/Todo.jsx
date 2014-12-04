@@ -49,14 +49,12 @@ App.ui.Todo = React.createClass({
   * render the element
   */
   render: function() {
+    var addFrom = React.createFactory(App.ui.todo.AddForm);
+    var list = React.createFactory(App.ui.todo.List);
     return(
       <div>
-        <App.ui.todo.AddForm
-          label={this.props.label}
-          add_new_todo={this.props.add_new_todo}
-          reload_todos={this.load_todos}/>
-        <App.ui.todo.List
-          todos={this.state.todos}/>
+        {addFrom({label: this.props.label, add_new_todo: this.props.add_new_todo, reload_todos: this.load_todos})}
+        {list({todos: this.state.todos})}
       </div>
     );
   }

@@ -27,7 +27,8 @@ App.components.TodoList = function(label, parent, collection) {
 * renders the form into the parent element
 */
 App.components.TodoList.prototype.render = function() {
-  React.renderComponent(App.ui.Todo(this.to_react()), this.parent);
+  var comp = React.createFactory(App.ui.Todo);
+  React.render(comp(this.to_react()), this.parent);
 };
 
 

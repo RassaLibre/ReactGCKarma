@@ -43,13 +43,12 @@ App.ui.todo.AddForm = React.createClass({displayName: 'AddForm',
   * render the element
   */
   render: function() {
+    var input = React.createFactory(App.ui.atomic.Input);
+    var button = React.createFactory(App.ui.atomic.Button);
     return(
       React.DOM.div(null, 
-        App.ui.atomic.Input({
-          ref: "name"}), 
-        App.ui.atomic.Button({
-          label: this.props.label, 
-          click: this.collect_new_todo_info})
+        input({ref: 'name'}), 
+        button({label: this.props.label, click: this.collect_new_todo_info})
       )
     );
   }

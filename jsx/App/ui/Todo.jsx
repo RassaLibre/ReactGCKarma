@@ -35,7 +35,7 @@ App.ui.Todo = React.createClass({
   * loads the Todos from the models
   */
   load_todos: function(){
-    this.setState({todos: this.props.todos()})
+    this.setState({todos: this.props.todos()});
   },
 
   /**

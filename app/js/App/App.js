@@ -1,4 +1,5 @@
 goog.provide('App');
+goog.provide('App.init');
 goog.require('App.components.TodoList');
 goog.require('App.components.todoList.Todo');
 goog.require('App.components.todoList.TodoCollection');
@@ -9,8 +10,6 @@ goog.require('goog.ui.IdGenerator');
 * inits the whole application
 */
 App.init = function() {
-  console.log('init');
-
   //generator of IDs
   var generator = new goog.ui.IdGenerator();
   var container = document.getElementById('container');
@@ -29,3 +28,4 @@ App.init = function() {
   var todoForm = new App.components.TodoList('Add', container, collection);
   todoForm.render();
 };
+goog.exportSymbol('App.init', App.init);

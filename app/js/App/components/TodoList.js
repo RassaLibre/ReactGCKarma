@@ -27,16 +27,9 @@ App.components.TodoList = function(label, parent, collection) {
 * renders the form into the parent element
 */
 App.components.TodoList.prototype.render = function() {
+  var to = this.to_react();
   var comp = React.createFactory(App.ui.Todo);
   React.render(comp(this.to_react()), this.parent);
-};
-
-
-/**
-* shows a dummy message
-*/
-App.components.TodoList.prototype.add_new_todo = function() {
-  console.log('a req to the server to save the TODO');
 };
 
 
@@ -46,8 +39,8 @@ App.components.TodoList.prototype.add_new_todo = function() {
 */
 App.components.TodoList.prototype.to_react = function() {
   return {
-    'label' : this.label,
-    'add_new_todo' : this.todos.add_todo.bind(this.todos),
-    'todos' : this.todos.to_react.bind(this.todos)
+    label: this.label,
+    add_new_todo: this.todos.add_todo.bind(this.todos),
+    todos: this.todos.to_react.bind(this.todos)
   };
 };

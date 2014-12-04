@@ -49,15 +49,11 @@ App.components.todoList.TodoCollection.prototype.get_todo_by_id = function(id) {
 *  @return {?Array} interface for React props
 */
 App.components.todoList.TodoCollection.prototype.to_react = function() {
-  if (this.todos.length <= 0) return null;
-  else {
-    var to_be_returned = [];
-    for (var i = 0; i < this.todos.length; i++) {
-      to_be_returned.push(this.todos[i].to_react());
-    }
-    console.log(to_be_returned);
-    return to_be_returned;
+  var to_be_returned = [];
+  for (var i = 0; i < this.todos.length; i++) {
+    to_be_returned.push(this.todos[i].to_react());
   }
+  return to_be_returned;
 };
 
 

@@ -17,6 +17,8 @@ To run the application, use three terminal windows one for each command bellow:
 	grunt
 	karma start karma/karma-unit.conf.js
 	
+I like to keep Karma command separated from the Grunt task, because I do not really have the best experiences with grunt-karma module.
+	
 ##How to build the whole thing?
 To build the whole project, just run:
 

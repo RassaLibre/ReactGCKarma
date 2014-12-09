@@ -17,6 +17,13 @@ To run the application, use three terminal windows one for each command bellow:
 	grunt
 	karma start karma/karma-unit.conf.js
 	
+##How to build the whole thing?
+To build the whole project, just run:
+
+	grunt build
+	
+This task will create a `build/` directory in the root folder with minified CSS, HTML and compiled JavaScript. There is a `prod-server.js` file which runs the built application.
+	
 ##Directories
 The whole app is in the `app/` directory. This folder contains some basic folders such `css/` for stylesheets and `js/` for JavaScript files. Folder `components/` contains bower components so do not make any changes there. `js/` folder contains file `deps.js` which is a JavaScript file with calculated dependencies of each script in the `App/` directory. `App/` directory is where the heart of the application lays.
 

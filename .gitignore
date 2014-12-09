@@ -3,3 +3,4 @@ app/components/
 app/js/ui/
 coverage/
 .sass-cache/
+build/

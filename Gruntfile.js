@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           '!app/js/App/**/*.test.js',
           '!app/components/closure-library/**/*_test.js'
           ],
-        dest: 'app/build/compiled.js'
+        dest: 'build/js/compiled.js'
       }
     },
     react: {
@@ -82,6 +82,55 @@ module.exports = function(grunt) {
         }
       }
     },
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'app/', src: ['css/**'], dest: 'build/'},
+          {expand: true, cwd: 'app/components/react/', src: ['react-with-addons.min.js'], dest: 'build/js/'}
+        ]
+      },
+    },
+    'string-replace': {
+      dist: {
+        files: {
+          'build/index.html': 'build/index.html',
+        },
+        options: {
+          replacements: [{
+            pattern: '<script src="http://localhost:35729/livereload.js"></script>',
+            replacement: ''
+          },
+          {
+            pattern: '<script src="components/react/react-with-addons.js"></script>',
+            replacement: '<script src="js/react-with-addons.min.js"></script>'
+          },
+          {
+            pattern: '<script src="components/closure-library/closure/goog/base.js"></script>',
+            replacement: ''
+          },
+          {
+            pattern: '<script src="js/deps.js"></script>',
+            replacement: ''
+          },
+          {
+            pattern: '<script>goog.require(\'App\')</script>',
+            replacement: '<script src="js/compiled.js"></script>'
+          }
+          ]
+        }
+      }
+    }, 
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'build/index.html': 'app/index.html',
+        }
+      }
+    },
     watch: {
       scripts: {
         files: ['app/js/App/**/*.js','app/index.html','jsx/**/*.jsx','sass/**/*.scss'],
@@ -93,23 +142,19 @@ module.exports = function(grunt) {
       },
     }
   });
-
-  //closure tools
+  
+  //loading npm tasks
   grunt.loadNpmTasks('grunt-closure-tools');
-
-  //watcher
   grunt.loadNpmTasks('grunt-contrib-watch');
-
-  //react
   grunt.loadNpmTasks('grunt-react');
-
-  //sass
   grunt.loadNpmTasks('grunt-contrib-sass');
-
-  //linting
   grunt.loadNpmTasks('grunt-closure-linter');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-  // Default task(s).
+  //registring tasks (obviously)
   grunt.registerTask('default', ['react','sass','closureFixStyle','closureLint','closureDepsWriter:app','watch']);
   grunt.registerTask('compile', ['closureCompiler:app']);
+  grunt.registerTask('build', ['closureCompiler:app','htmlmin','copy:main','string-replace']);
 };

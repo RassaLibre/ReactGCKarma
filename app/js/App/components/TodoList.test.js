@@ -1,11 +1,11 @@
-goog.require('App.core.todo.Todo');
+goog.require('App.components.TodoList');
 
 describe('todo component', function() {
 
   var todo;
 
   beforeEach(function() {
-    todo = new App.core.todo.Todo('Send');
+    todo = new App.components.TodoList('Send');
   });
 
   it('should save the name of the button in constructor', function() {
